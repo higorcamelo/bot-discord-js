@@ -5,7 +5,7 @@ const prefix = '-';
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
-const arquivosComandos = fs.readdirSync('./Comandos/').filter(file => file.endsWith('.js'));
+const arquivosComandos = fs.readdirSync("./comandos/").filter(file => file.endsWith('.js'));
 const comandoDesconhecido = require("./comandoDesc.js");
 
 client.on("ready", () =>{
@@ -28,7 +28,7 @@ client.on("guildMemberAdd", (member) =>{
 });
 
 for(const file in arquivosComandos){
-  const comando = require(`./Comandos/${file}`);
+  const comando = require(`./comandos/${file}`);
   client.commands.set(comando.name, comando);
 }
 
