@@ -6,7 +6,6 @@ const prefix = '-';
 const fs = require('fs');
 client.commands = new Discord.Collection();
 const arquivosComandos = fs.readdirSync("./comandos/").filter(file => file.endsWith('.js'));
-const comandoDesconhecido = require("./comandoDesc.js");
 
 client.on("ready", () =>{
     console.log(`Estou online!`);
@@ -37,13 +36,17 @@ client.on("message", mensagem =>{
     return;
   }
   const args = mensagem.content.slice(prefix.length).trim().split(/ +/);
-  const comando = args.shift().toLocaleLowerCase();
+  const nomeComando = args.shift().toLocaleLowerCase();
 
-  if(!client.comandos.has(comando)){
+  if(!client.commands.has(nomeComando)){
     return;
   }
+  const comando = client.commands.get(nomeComando);
+  if(!args.length()){
+    return mensagem.channel.send("Não há argumentos!");
+  }
   try{
-    client.comandos.get(comando).execute(mensagem, args);
+    comando.execute(mensagem, args);
   }catch(erro){
     console.error(erro);
     mensagem.reply("Ih, erro!");
