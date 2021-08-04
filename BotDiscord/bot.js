@@ -3,7 +3,9 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const prefix = '-';
 
-const leitorComandos = require("./leitor.js")(prefix);
+const fs = require('fs');
+client.commands = new Discord.Collection();
+const arquivosComandos = fs.readdirSync('./Comandos/').filter(file => file.endsWith('.js'));
 const comandoDesconhecido = require("./comandoDesc.js");
 
 client.on("ready", () =>{
@@ -25,16 +27,26 @@ client.on("guildMemberAdd", (member) =>{
   boasVindas.send(`Ih ala, o ${member.displayName} entroukkkkkkkkkjjjkjkkkk`)
 });
 
-client.on("message",(mensagem) =>{
-  if(!mensagem.author.bot){
-    console.log(`${mensagem.author.username} : ${mensagem.content}`);
+for(const file in arquivosComandos){
+  const comando = require(`./Comandos/${file}`);
+  client.commands.set(comando.name, comando);
+}
 
-    const args = mensagem.content.split(" ");
-    if(leitorComandos[args[0]]){
-      leitorComandos[args[0]](client,mensagem);
-    }else if(args[0].split("")[0] == config.prefix){
-      comandoDesconhecido(client,mensagem);
-    } 
+client.on("message", mensagem =>{
+  if(!mensagem.content.startsWith(prefix) || mensagem.author.bot){
+    return;
+  }
+  const args = mensagem.content.slice(prefix.length).trim().split(/ +/);
+  const comando = args.shift().toLocaleLowerCase();
+
+  if(!client.comandos.has(comando)){
+    return;
+  }
+  try{
+    client.comandos.get(comando).execute(mensagem, args);
+  }catch(erro){
+    console.error(erro);
+    mensagem.reply("Ih, erro!");
   }
 });
 
