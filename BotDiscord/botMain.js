@@ -2,11 +2,11 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 const prefix = '-';
+const caminhoPasta = './comandos/';
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
-const arquivosComandos = fs.readdirSync("./comandos/").filter(file => file.endsWith('.js'));
-
+const arquivosComandos = fs.readdirSync(caminhoPasta).filter(file => file.endsWith('.js'));
 client.on("ready", () =>{
     console.log(`Estou online!`);
     client.user.setStatus("dnd");
