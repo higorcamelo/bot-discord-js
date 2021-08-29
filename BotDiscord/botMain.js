@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const config = require("./config.json");
 const prefix = '-';
 const path = require('path');
-const dirPath = path.resolve(__dirname, './comandos/');
+const dirPath = path.join(__dirname, './comandos');
 
 const fs = require('fs');
 client.commands = new Discord.Collection();
