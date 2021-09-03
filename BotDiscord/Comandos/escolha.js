@@ -1,10 +1,15 @@
-module.exports = async(client, mensagem) =>{
+module.exports = {
+    name: "escolha",
+    descricao: "aplica reações baseadas em repostas do usuario a emotes",
+    args: false,
+    async execute(mensagem){
+
     const escolha = await mensagem.reply("Escolha uma classe para o RPG!");
-    escolha.react('🐵')
-        .then(() => escolha.react('💃'))
-        .then(() => escolha.react('🔮'))
-        .then(() => escolha.react('🔞'))
-        .then(() => escolha.react('🚁'))
+    escolha.react('🐵');
+    escolha.react('💃');
+    escolha.react('🔮');
+    escolha.react('🔞');
+    escolha.react('🚁');
 
     const filtro = (reaction, user) =>{
         return['🐵','💃','🔮','🔞','🚁'].includes(reaction.emoji.name) && user.id == mensagem.author.id;
@@ -22,7 +27,7 @@ module.exports = async(client, mensagem) =>{
                     mensagem.reply("A intenção original era exibir classes comuns de RPGs, mas por falta de icones que lembrem elas, imagine essa bola de cristal como se fosse o mago. Obrigado.");
                     break;
                 case '💃':
-                    mensagem.reply("Bardos e dançarinos nunca são boas classes, em Final Fantasy V, apenas uma habilidade do Dançarino prestava, e olhe lá, porque mais pro final do jogo, ela não dava tanto dano.");
+                    mensagem.reply("Bardos e dançarinos nunca são boas classes, em Final Fantasy V, apenas uma habilidade do Dançarino prestava, e olhe lá, pois mais pro final do jogo, ela não dava tanto dano.");
                     break;
                 case '🔞':
                     mensagem.reply("O servidor de baixaria é pra lá, mais respeito, por favor.");
@@ -38,5 +43,5 @@ module.exports = async(client, mensagem) =>{
             mensagem.reply("Demorou muito, amigão")
         })
 
-
-}
+    },
+};
