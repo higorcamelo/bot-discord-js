@@ -1,10 +1,11 @@
 # Bot para Discord em JavaScript
- Um bot em JavaScript que, por ora, executa comandos simples, como exibir latência da conexão, exibir imagens e pesquisar vídeos
+ Um bot em JavaScript que executa comandos simples, como exibir latência da conexão, exibir imagens e pesquisar vídeos.
+ 
+ Este bot não possui finalidade exata, sendo mais voltado a estudar e compilar o funcionamento de um bot para Discord e do NodeJS como.
  
  ## Afazeres:
  - [ ] Refazer o leitor de comandos (command handler)
  - [ ] Tornar funcional o comando de procurar por imagens
- - [ ] Definir um nome próprio para o sistema
  - [ ] Implementar busca de vídeos no Youtube
  
  
