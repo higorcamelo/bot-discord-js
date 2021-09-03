@@ -36,9 +36,6 @@ client.on("message", mensagem =>{
     return;
   }
   const comando = client.commands.get(nomeComando);
-  if(!args.length){
-    return mensagem.channel.send("Não há argumentos!");
-  }
   try{
     comando.execute(mensagem, args);
   }catch(erro){

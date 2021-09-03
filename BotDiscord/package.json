@@ -10,7 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@yimura/scraper": "^1.2.2",
     "discord.js": "^12.5.1",
     "install": "^0.13.0"
   }
