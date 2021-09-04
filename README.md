@@ -6,7 +6,7 @@
  ## Afazeres:
  - [x] Refazer o leitor de comandos (03/09/21) 
  - [x] Tornar funcional o comando de procurar por imagens (03/09/21)
- - [ ] Implementar busca de vídeos no Youtube
+ - [x] Implementar busca de vídeos no Youtube (04/09/21)
  - [ ] Adicionar novas funções
  
  
