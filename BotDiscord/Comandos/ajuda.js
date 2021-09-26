@@ -1,19 +1,19 @@
-const config = require ("../config.json");
-
-const descricao = {
-    "%ajuda": "Exibe a lista de comandos, tipo o que está acontecendo agora",
-
-    "%ping": "O Hello World dos bots de Discord (mas agora mostrando seu ms!)",
-
-    "%imagem": "O sonho de princesa do autor, exibe uma imagem baseada no que você escreve (um dia será real)",
-
-    "%escolha": "Escolha uma classe dentre uma excentria e espetacular seleção que faria D&D chorar no banho"
+const { MessageEmbed } = require('discord.js');
+module.exports = {
+    name:'ajuda',
+    description:'lista os comandos disponiveis',
+    args:false,
+    execute(mensagem){
+        const mensagemEmbed = new MessageEmbed()
+        .setColor('RANDON')
+        .setTitle('Olha só o que eu sei fazer:')
+        .addFields(
+            {name:'-ajuda', value:'Bem, é o comando que você está, o qual exibe os comandos disponiveis.'},
+            {name:'-ping', value:'Respondo "Pong!" e exibo a latencia que estou tendo.'},
+            {name:'-escolha', value:'Exibo algumas opções para você reagir e falo coisas diferentes dependendo da resposta.'},
+            {name:'-imagem', value:'Pesquiso uma imagem que você quiser. As vezes posso demorar um pouco, mas não desista de mim!'},
+            {name:'-video', value:'Pesquiso no YouTube um video da sua preferencia.'}
+        )
+        mensagem.reply(mensagemEmbed);
+    }
 }
-
-/*module.exports = async (client, mensagem) =>{
-    var lista = "Comandos:";
-    Object.keys(commands).forEach(command =>{
-        lista += `\n ${command}: ${descricao[command] ? descricao[command] : 'Sem descrição'}`
-    });
-    mensagem.reply(lista);
-}*/
