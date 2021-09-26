@@ -20,6 +20,7 @@ module.exports = {
                     'description':description
                 }
                 return resultado;
+                //Função que cria um dicionario contendo as informações do video
             }
         
             let infoVideo = await videoYT.searchOne(busca);
@@ -27,6 +28,7 @@ module.exports = {
                 mensagem.reply('Nenhum video encontrado!');
             }
             videoDetalhe = achaVideo(Util.escapeMarkdown(infoVideo.title), infoVideo.url, infoVideo.durationFormatted, infoVideo.thumbnail.url, infoVideo.uploadedAt, infoVideo.views, infoVideo.description);
+            //Pesquisa o video e insere as informações deste no dicionario criado
 
             const embed = new MessageEmbed()
             .setTitle(videoDetalhe.title)
@@ -40,6 +42,7 @@ module.exports = {
             `)
             .setFooter(`Um oferecimento de ${mensagem.author.username}`)
 
+            //Cria uma mensagem "embed", deixando a exibição do link do video mais bonita
             mensagem.reply(embed);
         }
     }

@@ -18,9 +18,9 @@ for(const file of arquivosComandos){
 
 client.on("ready", () =>{
     console.log(`Estou online!`);
-    client.user.setStatus("dnd");
     client.user.setActivity("Firme, forte e pronto para a ação!");
 });
+//Exibe uma mensagem no terminal e no próprio Discord quando o bot é inicializado
 
 client.on("guildMemberAdd", (member) =>{
   const boasVindas = member.guild.channels.cache.find(channel => channel.id == config.geralID);

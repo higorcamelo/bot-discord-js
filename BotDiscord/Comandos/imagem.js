@@ -16,6 +16,7 @@ module.exports = {
             const consulta_imagem = args.join('');
             const resultado_imagem = await google.scrape(consulta_imagem, 1);
             mensagem.reply(resultado_imagem[0].url);
+            //Pesquisa uma imagem no Google, exibindo sempre o primeiro resultado
         }
 
     }
